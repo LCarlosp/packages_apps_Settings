@@ -18,10 +18,10 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-        <com.android.settings.widget.MonetAdaptiveIconShapeDrawable
+        <com.android.settingslib.widget.AdaptiveIconShapeDrawable
             android:width="@dimen/dashboard_tile_image_size"
             android:height="@dimen/dashboard_tile_image_size"
-            android:color="#F29E7F"/>
+            android:color="@color/seticonbg"/>
     </item>
 
     <item

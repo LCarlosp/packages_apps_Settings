@@ -25,9 +25,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.DrawableWrapper;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.content.Context;
-import android.app.ActivityThread;
-import com.nezuko.support.monet.colorgiber;
 
 import com.android.settings.R;
 
@@ -46,9 +43,6 @@ import java.io.IOException;
 public class TintDrawable extends DrawableWrapper {
     private ColorStateList mTint;
     private int[] mThemeAttrs;
-    final Context context = ActivityThread.currentApplication();
-    boolean isDarkM = context.getResources().getConfiguration().isNightModeActive();
-    colorgiber cg = new colorgiber();
 
     /** No-arg constructor used by drawable inflation. */
     public TintDrawable() {
@@ -101,11 +95,7 @@ public class TintDrawable extends DrawableWrapper {
 
     private void applyTint() {
         if (getDrawable() != null && mTint != null) {
-            if (isDarkM){
-                getDrawable().mutate().setTintList(ColorStateList.valueOf(cg.noSysPriviledgeMoment(5, 2, context)));
-            } else{
-                getDrawable().mutate().setTintList(ColorStateList.valueOf(cg.noSysPriviledgeMoment(5, 9, context)));
-            }
+            getDrawable().mutate().setTintList(mTint);
         }
-    } 
+    }
 }

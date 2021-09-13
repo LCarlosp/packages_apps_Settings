@@ -12,6 +12,7 @@
 -->
 
 <resources>
-
+    <color name="seticon">#000000</color>
+    <color name="seticonbg">#30000000</color>
     <color name="settext">#000000</color>
 </resources>

@@ -98,7 +98,6 @@ public class EntityHeaderController {
     private boolean mIsInstantApp;
 
     private View.OnClickListener mEditOnClickListener;
-    SettingsColors sc = new SettingsColors();
 
     /**
      * Creates a new instance of the controller.
@@ -319,6 +318,7 @@ public class EntityHeaderController {
             Log.w(TAG, "No actionbar, cannot style actionbar.");
             return this;
         }
+        SettingsColors sc = new SettingsColors(activity);
         actionBar.setBackgroundDrawable(
                 new ColorDrawable(sc.mainBG(activity)));
         actionBar.setElevation(0);

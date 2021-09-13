@@ -57,9 +57,10 @@ import java.util.Set;
 
 public class SettingsBaseActivity extends FragmentActivity {
 
-    protected static final boolean DEBUG_TIMING = false;
+    protected static final boolean DEBUG_TIMING = true;
     private static final String TAG = "SettingsBaseActivity";
     private static final String DATA_SCHEME_PKG = "package";
+    final long startTime = System.currentTimeMillis();
 
     // Serves as a temporary list of tiles to ignore until we heard back from the PM that they
     // are disabled.
@@ -68,7 +69,6 @@ public class SettingsBaseActivity extends FragmentActivity {
     private final PackageReceiver mPackageReceiver = new PackageReceiver();
     private final List<CategoryListener> mCategoryListeners = new ArrayList<>();
     private int mCategoriesUpdateTaskCount;
-    SettingsColors sc = new SettingsColors();
     PaintDrawable bgrounded;
 
     @Override
@@ -97,7 +97,7 @@ public class SettingsBaseActivity extends FragmentActivity {
             ((AppBarLayout) findViewById(R.id.baseAppBar)).setExpanded(false);
             return;
         }
-
+        SettingsColors sc = new SettingsColors(this);
         toolbar.setBackground(new PaintDrawable(sc.mainBG(this)));
         ctl.setBackground(new PaintDrawable(sc.mainBG(this)));
         ctl.setContentScrimColor(sc.mainBG(this));
@@ -147,6 +147,7 @@ public class SettingsBaseActivity extends FragmentActivity {
             parent.removeAllViews();
         }
         LayoutInflater.from(this).inflate(layoutResID, parent);
+        SettingsColors sc = new SettingsColors(this);
 
         getWindow().getDecorView().setBackgroundColor(sc.mainBG(this));
         parent.setBackgroundColor(sc.mainBG(this));

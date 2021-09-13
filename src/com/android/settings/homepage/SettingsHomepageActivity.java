@@ -48,11 +48,14 @@ import com.android.settings.overlay.FeatureFactory;
 import com.nezuko.support.monet.SettingsColors;
 import android.graphics.drawable.PaintDrawable;
 import android.content.Context;
+import android.util.Log;
 
 public class SettingsHomepageActivity extends FragmentActivity {
 
     PaintDrawable bgrounded2;
     PaintDrawable bgrounded;
+    final long startTime = System.currentTimeMillis();
+    private static final String LOG_TAG = "SettingsHomepageActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,7 @@ public class SettingsHomepageActivity extends FragmentActivity {
         FeatureFactory.getFactory(this).getSearchFeatureProvider()
                 .initSearchToolbar(this /* activity */, toolbar, SettingsEnums.SETTINGS_HOMEPAGE);
         
-        SettingsColors sc = new SettingsColors();
+        SettingsColors sc = new SettingsColors(this);
 
         bgrounded =  new PaintDrawable(sc.secBG(this));
         bgrounded.setCornerRadius(pxToDp(this ,160));
@@ -89,7 +92,6 @@ public class SettingsHomepageActivity extends FragmentActivity {
         LinearLayout lnLayout = (LinearLayout) findViewById(R.id.homepage_container);
         Drawable background = lnLayout.getBackground();
         background.setTint(sc.secBG(this));
-
     }
 
     public static int pxToDp(Context context, int px) {

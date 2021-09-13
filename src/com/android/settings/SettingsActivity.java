@@ -82,7 +82,6 @@ public class SettingsActivity extends SettingsBaseActivity
         ButtonBarHandler, FragmentManager.OnBackStackChangedListener {
 
     private static final String LOG_TAG = "SettingsActivity";
-    SettingsColors sc = new SettingsColors();
 
     // Constants for state save/restore
     private static final String SAVE_KEY_CATEGORIES = ":settings:categories";
@@ -293,6 +292,7 @@ public class SettingsActivity extends SettingsBaseActivity
             actionBar.setDisplayHomeAsUpEnabled(!isInSetupWizard);
             actionBar.setHomeButtonEnabled(!isInSetupWizard);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            SettingsColors sc = new SettingsColors(this);
             getWindow().setStatusBarColor(sc.mainBG(this));
             actionBar.setDisplayShowTitleEnabled(true);
         }
@@ -345,10 +345,6 @@ public class SettingsActivity extends SettingsBaseActivity
                     skipButton.setVisibility(View.VISIBLE);
                 }
             }
-        }
-
-        if (DEBUG_TIMING) {
-            Log.d(LOG_TAG, "onCreate took " + (System.currentTimeMillis() - startTime) + " ms");
         }
     }
 
